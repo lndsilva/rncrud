@@ -24,6 +24,14 @@ export default props=>{
                     
                     <ListItem.Chevron
                         name="edit"
+                        color='orange'
+                        size={25}
+                        onPress={
+                            ()=> props.navigation.navigate('UserForm', user)
+                        }/>
+                    <ListItem.Chevron
+                        name="delete"
+                        color="red"
                         size={25}
                         onPress={
                             ()=> props.navigation.navigate('UserForm', user)
