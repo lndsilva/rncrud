@@ -1,11 +1,26 @@
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, Alert } from "react-native";
 import users from "../data/users";
 import { ListItem, Avatar, ThemeProvider, createTheme } from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
 export default props=>{
+
+    function confirmUserDeletion(user){
+        Alert.alert('Excluir usuário','Deseja excluir o usuário?',
+        [{
+            text: 'Sim',
+            onPress(){
+                console.log('delete' + user.id)
+            }
+        },
+        {
+            text: 'Não'
+        }
+    ]
+        )
+    }
 
     function getUserItem({item: user}){
         return (
@@ -34,7 +49,7 @@ export default props=>{
                         color="red"
                         size={25}
                         onPress={
-                            ()=> props.navigation.navigate('UserForm', user)
+                            ()=> confirmUserDeletion(user)
                         }/>
                     {/* <Icon name="edit" size={25} color="orange"/> */}
                 </ListItem>
