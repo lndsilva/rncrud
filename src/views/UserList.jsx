@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, FlatList, Alert } from "react-native";
+import { View, FlatList, Alert } from "react-native";
 import users from "../data/users";
 import { ListItem, Avatar, ThemeProvider} from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,7 +21,6 @@ export default props=>{
     ]
         )
     }
-
     function getUserItem({item: user}){
         return (
             <ThemeProvider>
@@ -41,6 +40,7 @@ export default props=>{
                         name="edit"
                         color='orange'
                         size={25}
+                        
                         onPress={
                             ()=> props.navigation.navigate('UserForm', user)
                         }/>
@@ -48,6 +48,7 @@ export default props=>{
                         name="delete"
                         color="red"
                         size={25}
+                        
                         onPress={
                             ()=> confirmUserDeletion(user)
                         }/>
@@ -67,4 +68,3 @@ export default props=>{
         </View>
     )
 }
-
