@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, FlatList, Alert } from "react-native";
 import users from "../data/users";
-import { ListItem, Avatar, ThemeProvider, createTheme } from '@rneui/themed';
+import { ListItem, Avatar, ThemeProvider} from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
