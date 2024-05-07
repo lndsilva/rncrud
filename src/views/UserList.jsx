@@ -40,7 +40,7 @@ export default props=>{
                         name="edit"
                         color='orange'
                         size={25}
-                        
+                        /*onPressOut={}*/
                         onPress={
                             ()=> props.navigation.navigate('UserForm', user)
                         }/>
