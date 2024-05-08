@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, FlatList, Alert } from "react-native";
 import users from "../data/users";
-import { ListItem, Avatar, ThemeProvider} from '@rneui/themed';
+import { ListItem, Avatar, ThemeProvider, Button} from '@rneui/themed';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { color } from "@rneui/base";
+import UsersContext from "../context/UsersContext";
 
 
 export default props=>{
+
+    const { state } = useContext(UsersContext)
 
     function confirmUserDeletion(user){
         Alert.alert('Excluir usuário','Deseja excluir o usuário?',
         [{
             text: 'Sim',
             onPress(){
-                console.log('delete' + user.id)
+                console.log('Usuário deletado: ' + user.id)
             }
         },
         {
@@ -29,6 +33,7 @@ export default props=>{
                     onPress={()=>{
                         props.navigation.navigate('UserForm')
                     }}
+                    
                 >                
                     <Avatar source={{uri: user.avatarURL}}/>
                     <ListItem.Content>
@@ -39,8 +44,7 @@ export default props=>{
                     <ListItem.Chevron
                         name="edit"
                         color='orange'
-                        size={25}
-                        /*onPressOut={}*/
+                        size={25}                        
                         onPress={
                             ()=> props.navigation.navigate('UserForm', user)
                         }/>
@@ -58,11 +62,28 @@ export default props=>{
         )
         
     }
+
+    function getAction(user){
+        return (
+            <>
+                <Button 
+                    onPress={()=> props.navigation.navigate('UserForm', user)}
+                    type="clear"
+                    icon={<Icon name="edit" size={25} color='orange'/>}
+                />
+                <Button 
+                    onPress={()=> props.navigation.navigate('UserForm', user)}
+                    type="clear"
+                    icon={<Icon name="delete" size={25} color='red'/>}
+                />
+            </>
+        )
+    }
     return (
         <View>
             <FlatList
                 keyExtractor={user => user.id.toString()}
-                data={users}
+                data={state.users}
                 renderItem={getUserItem}
             />
         </View>

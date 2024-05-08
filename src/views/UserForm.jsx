@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default ({route,navigation})=>{
-    
-    const [user, setUser] = useState(route.param ? route.param : {})
+
+    const [user, setUser] = useState(route.params ? route.params : {})
 
     return (
         <View style={style.form}>
@@ -41,6 +41,7 @@ const style = StyleSheet.create(
     {
         form: {
             padding: 12,
+        flex: 1,
         },
         input:{
             height: 40,
