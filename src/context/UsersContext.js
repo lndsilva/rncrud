@@ -11,7 +11,7 @@ export const UsersProvider = props => {
             const user = action.payload
             return{
                 //...state,
-                users: state.users.filter(u => u.id != user.id)
+                users: state.users.filter(u => u.id !== user.id)
             }
         }
         return state

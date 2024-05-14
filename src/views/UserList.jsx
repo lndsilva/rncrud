@@ -15,7 +15,7 @@ export default props=>{
         Alert.alert('Excluir usuário','Deseja excluir o usuário?',
         [{
             text: 'Sim',
-            onPress(){
+            onPress(){            
                 dispatch({
                     type: 'deleteUser',
                     payload: user,
